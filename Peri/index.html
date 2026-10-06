@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wennuan premium hijab collection for wholesale buyers, private labels and boutique brands.">
+  <title>Wennuan | Premium Hijab Wholesale</title>
+  <style>
+    :root {
+      --ink: #27231f;
+      --muted: #716a61;
+      --cream: #f8f4ec;
+      --paper: #fffdf8;
+      --sand: #e9dfcf;
+      --sage: #6f8576;
+      --sage-dark: #31463b;
+      --gold: #b69255;
+      --line: rgba(39,35,31,.15);
+      --shadow: 0 18px 50px rgba(56, 42, 27, .12);
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: Arial, Helvetica, sans-serif;
+      --mono: 'Courier New', monospace;
+      --shell: min(1180px, calc(100% - 48px));
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--cream); font: 16px/1.6 var(--sans); }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
+    button { font: inherit; }
+    .shell { width: var(--shell); margin: 0 auto; }
+    .eyebrow { color: var(--gold); font: 700 11px/1.2 var(--mono); letter-spacing: .16em; text-transform: uppercase; }
+    .topline { padding: 10px 18px; color: #f9f5eb; background: var(--sage-dark); font: 11px/1.2 var(--mono); letter-spacing: .12em; text-align: center; text-transform: uppercase; }
+    .nav { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(255,255,255,.16); background: rgba(49,70,59,.96); color: #fffdf8; }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; min-height: 72px; gap: 24px; }
+    .brand { display:flex; align-items:center; gap: 12px; letter-spacing: .08em; }
+    .brand-mark { display:grid; place-items:center; width: 38px; height: 38px; border: 1px solid var(--gold); border-radius: 50%; color: var(--gold); font: 18px var(--serif); }
+    .brand-name { font: 600 15px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+    .nav-links { display:flex; align-items:center; gap: 28px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+    .nav-links a { opacity: .84; transition: color .2s ease, opacity .2s ease; }
+    .nav-links a:hover { color: #e7c989; opacity: 1; }
+    .nav-cta { padding: 11px 16px; border: 1px solid rgba(255,255,255,.42); border-radius: 999px; }
+    .hero { min-height: 680px; display:grid; grid-template-columns: 1.02fr .98fr; background: var(--paper); }
+    .hero-copy { display:flex; flex-direction:column; justify-content:center; align-items:flex-start; padding: 76px clamp(24px, 4vw, 64px) 70px clamp(24px, 4vw, 64px); }
+    .hero-copy h1 { max-width: 590px; margin: 18px 0 22px; font: 400 clamp(48px, 7vw, 86px)/.98 var(--serif); letter-spacing: -.055em; }
+    .arabic { margin-bottom: 18px; color: var(--sage); font: 24px var(--serif); }
+    .hero-copy p { max-width: 520px; color: var(--muted); font-size: 18px; }
+    .hero-actions { display:flex; gap: 12px; flex-wrap:wrap; margin-top: 30px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height: 46px; padding: 0 22px; border: 1px solid transparent; border-radius: 999px; cursor:pointer; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(42,36,28,.12); }
+    .btn-gold { color: #251e16; background: var(--gold); }
+    .btn-outline { border-color: var(--line); background: transparent; }
+    .btn-light { border-color: rgba(255,255,255,.5); color: #fffdf8; background: transparent; }
+    .hero-media { position:relative; min-height: 680px; overflow:hidden; }
+    .hero-media img { height: 100%; filter: saturate(.76) contrast(.96); }
+    .hero-media::after { content:''; position:absolute; inset:0; background: linear-gradient(90deg, rgba(39,35,31,.16), transparent 44%), linear-gradient(0deg, rgba(39,35,31,.35), transparent 35%); pointer-events:none; }
+    .hero-note { position:absolute; z-index:1; right: 28px; bottom: 26px; max-width: 240px; padding: 17px 18px; color: #fffdf8; border-left: 2px solid var(--gold); background: rgba(39,35,31,.55); backdrop-filter: blur(8px); font: 12px/1.5 var(--mono); }
+    .stats { display:grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .stat { padding: 28px 18px; border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: 0; }
+    .stat strong { display:block; color: var(--sage-dark); font: 400 40px/1 var(--serif); }
+    .stat span { display:block; margin-top: 8px; color: var(--muted); font-size: 12px; }
+    .section { padding: 104px 0; }
+    .section-head { display:flex; align-items:end; justify-content:space-between; gap: 30px; margin-bottom: 42px; }
+    .section-head h2 { max-width: 580px; margin: 12px 0 0; font: 400 clamp(36px, 5vw, 62px)/1.02 var(--serif); letter-spacing: -.045em; }
+    .section-head p { max-width: 370px; margin: 0; color: var(--muted); }
+    .collection { background: var(--cream); }
+    .filters { display:flex; gap: 8px; flex-wrap:wrap; margin-bottom: 28px; }
+    .filter { padding: 10px 16px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); background: transparent; cursor:pointer; font-size: 12px; }
+    .filter.active, .filter:hover { border-color: var(--sage); color: #fff; background: var(--sage); }
+    .product-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .product { overflow:hidden; border: 1px solid var(--line); background: var(--paper); transition: transform .25s ease, box-shadow .25s ease; }
+    .product:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .product-media { position:relative; aspect-ratio: 1 / 1.08; overflow:hidden; background: var(--sand); }
+    .product-media img { height:100%; transition: transform .5s ease; }
+    .product:hover .product-media img { transform: scale(1.045); }
+    .product-tag { position:absolute; top:14px; left:14px; padding: 6px 9px; color: #fff; background: var(--sage-dark); font: 10px var(--mono); letter-spacing: .1em; text-transform:uppercase; }
+    .product-body { padding: 20px; }
+    .product-body h3 { min-height: 56px; margin: 10px 0 13px; font: 400 21px/1.16 var(--serif); }
+    .product-meta { display:flex; justify-content:space-between; gap: 10px; color: var(--muted); font-size: 12px; }
+    .product-price { margin-top: 15px; color: var(--gold); font: 700 15px var(--mono); }
+    .product-actions { display:grid; grid-template-columns: 1.1fr .9fr; gap: 8px; margin-top: 18px; }
+    .product-action { min-height: 40px; padding: 0 10px; border: 1px solid var(--gold); color: var(--gold); background: transparent; cursor: pointer; font: 700 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; transition: transform .2s ease, background .2s ease, color .2s ease; }
+    .product-action.choose { border-color: var(--ink); color: #fffdf8; background: var(--ink); }
+    .product-action:hover { transform: translateY(-2px); color: #fffdf8; background: var(--sage-dark); border-color: var(--sage-dark); }
+    .product-modal { position:fixed; z-index:40; inset:0; display:none; place-items:center; padding: 20px; background: rgba(26,22,17,.56); }
+    .product-modal.open { display:grid; }
+    .product-modal-card { position:relative; display:grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 28px; width:min(780px, 100%); max-height: calc(100% - 20px); padding: 28px; overflow:auto; background: var(--paper); box-shadow: var(--shadow); }
+    .product-modal-media { min-height: 330px; overflow:hidden; background: var(--sand); }
+    .product-modal-media img { height:100%; min-height: 330px; }
+    .product-modal-body { padding: 8px 8px 8px 0; }
+    .product-modal-body h2 { margin: 12px 0 14px; font: 400 clamp(30px, 4vw, 46px)/1.03 var(--serif); letter-spacing: -.045em; }
+    .product-modal-copy { color: var(--muted); font-size: 14px; }
+    .product-modal-specs { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 24px 0; }
+    .product-modal-spec { padding: 12px; border: 1px solid var(--line); }
+    .product-modal-spec small { display:block; color: var(--muted); font: 10px var(--mono); letter-spacing: .1em; text-transform:uppercase; }
+    .product-modal-spec strong { display:block; margin-top: 5px; color: var(--sage-dark); font: 15px var(--mono); }
+    .product-modal-close { position:absolute; top: 14px; right: 14px; z-index:1; width: 36px; height: 36px; border:1px solid var(--line); border-radius:50%; color: var(--ink); background: rgba(255,253,248,.9); cursor:pointer; font-size: 22px; line-height: 1; }
+    .color-panel[hidden], .detail-panel[hidden] { display:none; }
+    .color-label { display:flex; align-items:center; justify-content:space-between; margin: 20px 0 10px; color: var(--muted); font: 11px var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+    .selected-color { color: var(--sage-dark); font-weight:700; }
+    .color-grid { display:flex; flex-wrap:wrap; gap: 10px; }
+    .color-swatch { width: 32px; height: 32px; border: 2px solid transparent; border-radius:50%; box-shadow: 0 0 0 1px var(--line); cursor:pointer; }
+    .color-swatch.active { border-color: var(--paper); box-shadow: 0 0 0 2px var(--sage-dark); }
+    .modal-actions { display:flex; gap: 10px; flex-wrap:wrap; margin-top: 24px; }
+    .modal-actions .btn { min-height: 42px; }
+    @media (max-width: 640px) { .product-modal-card { grid-template-columns: 1fr; padding: 20px; } .product-modal-media, .product-modal-media img { min-height: 260px; } .product-modal-body { padding: 0; } }
+    .manifesto { color: #f9f5ec; background: var(--sage-dark); }
+    .manifesto-grid { display:grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items:center; }
+    .manifesto h2 { margin: 14px 0 20px; color: #fffdf8; font: 400 clamp(38px, 5vw, 67px)/1.02 var(--serif); letter-spacing: -.045em; }
+    .manifesto p { max-width: 510px; color: rgba(255,253,248,.72); font-size: 17px; }
+    .manifesto-list { display:grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid rgba(255,255,255,.2); }
+    .manifesto-item { min-height: 150px; padding: 24px 20px 24px 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+    .manifesto-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.2); }
+    .manifesto-item:nth-child(even) { padding-left: 20px; }
+    .manifesto-item strong { display:block; margin-bottom: 8px; color: #e7c989; font: 400 23px var(--serif); }
+    .manifesto-item span { color: rgba(255,255,255,.7); font-size: 13px; }
+    .process { background: var(--paper); }
+    .process-grid { display:grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .step { min-height: 190px; padding: 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .step-number { color: var(--gold); font: 12px var(--mono); }
+    .step h3 { margin: 28px 0 10px; font: 400 25px var(--serif); }
+    .step p { color: var(--muted); font-size: 13px; }
+    .contact { color: #fffdf8; background: #3e4f45; }
+    .contact-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items:end; }
+    .contact h2 { margin: 15px 0 18px; color: #fffdf8; font: 400 clamp(40px, 5.5vw, 72px)/.98 var(--serif); letter-spacing: -.05em; }
+    .contact p { max-width: 480px; color: rgba(255,255,255,.75); }
+    .contact-links { display:grid; gap: 12px; }
+    .contact-link { display:flex; align-items:center; justify-content:space-between; padding: 17px 0; border-bottom: 1px solid rgba(255,255,255,.22); color: #fffdf8; font-size: 14px; }
+    .contact-link span:last-child { color: #e7c989; font: 11px var(--mono); }
+    footer { padding: 24px 0; color: rgba(255,255,255,.58); background: #27372e; font-size: 12px; }
+    .footer-inner { display:flex; justify-content:space-between; gap: 20px; flex-wrap:wrap; }
+    .quote-fab { position:fixed; right: 22px; bottom: 22px; z-index: 25; display:flex; align-items:center; gap: 8px; padding: 13px 17px; color: #251e16; border:0; border-radius:999px; background: var(--gold); box-shadow: 0 12px 28px rgba(43,31,19,.24); cursor:pointer; font: 700 11px var(--mono); letter-spacing: .07em; text-transform:uppercase; }
+    .quote-count { display:grid; place-items:center; min-width:20px; height:20px; padding:0 5px; border-radius:50%; color: #fffdf8; background: var(--sage-dark); font-size:10px; }
+    .quote-panel { position:fixed; z-index:30; inset:0; display:none; background: rgba(26,22,17,.42); }
+    .quote-panel.open { display:block; }
+    .quote-card { position:absolute; top:0; right:0; display:flex; flex-direction:column; width:min(450px, 100%); height:100%; padding: 0; overflow:hidden; background: var(--paper); box-shadow: -18px 0 45px rgba(39,35,31,.14); }
+    .quote-card-header { flex:0 0 auto; padding: 24px 24px 22px; color:#fffdf8; background:#38291f; }
+    .quote-card-header .eyebrow { color:#e7c989; }
+    .quote-card-header h2 { margin: 10px 0 0; color:#fffdf8; font: 400 31px/1 var(--serif); }
+    .quote-card-header .quote-close { color:#fffdf8; border-color:rgba(255,255,255,.42); }
+    .quote-card p { color: var(--muted); }
+    .quote-close { float:right; width:36px; height:36px; border:1px solid var(--line); border-radius:50%; background:transparent; cursor:pointer; font-size:21px; line-height:1; }
+    .quote-body { flex:1 1 auto; overflow:auto; padding: 24px; }
+    .cart-empty { display:grid; place-items:center; min-height: 310px; padding: 30px 20px; text-align:center; }
+    .cart-empty-icon { display:grid; place-items:center; width: 72px; height:72px; margin-bottom: 18px; border-radius: 18px; color: #b8a7d8; background: linear-gradient(135deg, #e8ddfa, #c8b7e9); font-size: 36px; }
+    .cart-empty strong { display:block; color:var(--ink); font: 400 22px var(--serif); }
+    .cart-empty span { display:block; margin-top: 6px; color:var(--muted); font-size: 13px; }
+    .cart-items { display:grid; gap: 14px; }
+    .cart-item { display:grid; grid-template-columns: 62px 1fr; gap: 12px; padding-bottom: 14px; border-bottom:1px solid var(--line); }
+    .cart-item-image { width:62px; height:72px; object-fit:cover; background:var(--sand); }
+    .cart-item-name { margin:0 0 5px; color:var(--ink); font: 400 16px/1.15 var(--serif); }
+    .cart-item-meta { color:var(--muted); font: 11px/1.4 var(--mono); }
+    .cart-item-bottom { display:flex; align-items:center; justify-content:space-between; gap: 10px; margin-top: 10px; }
+    .cart-qty { display:inline-flex; align-items:center; border:1px solid var(--line); }
+    .cart-qty button { width:28px; height:28px; border:0; color:var(--sage-dark); background:transparent; cursor:pointer; }
+    .cart-qty span { min-width:26px; text-align:center; color:var(--ink); font: 12px var(--mono); }
+    .cart-remove { border:0; color:var(--muted); background:transparent; cursor:pointer; font-size:12px; }
+    .cart-remove:hover { color:#a8412f; }
+    .cart-summary { display:flex; justify-content:space-between; margin-top: 24px; padding-top: 16px; border-top:1px solid var(--line); color:var(--muted); font: 12px var(--mono); }
+    .cart-summary strong { color:var(--ink); }
+    .quote-options { display:grid; gap: 10px; margin: 18px 0 0; }
+    .quote-option { display:flex; justify-content:space-between; padding: 15px; border:1px solid var(--line); color: var(--sage-dark); background: #fff; }
+    .quote-option span { color: var(--gold); font: 11px var(--mono); }
+    .cart-footer { flex:0 0 auto; display:grid; gap: 8px; padding: 14px 24px 22px; border-top:1px solid var(--line); background:#f7f2e9; }
+    .cart-footer[hidden] { display:none; }
+    .cart-action { display:flex; align-items:center; justify-content:center; min-height:48px; border:0; border-radius:10px; cursor:pointer; font-weight:700; }
+    .cart-action.whatsapp { color:#fff; background:linear-gradient(90deg,#18c96b,#119c83); }
+    .cart-action.email { color:#fff; background:#b89236; }
+    .cart-action.excel { border:1px solid var(--line); color:var(--ink); background:transparent; }
+    .cart-action:hover { filter:brightness(.96); transform:translateY(-1px); }
+    .reveal { opacity:0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+    @media (max-width: 900px) {
+      :root { --shell: min(100% - 32px, 700px); }
+      .nav-links { display:none; }
+      .hero { grid-template-columns:1fr; }
+      .hero-copy { padding: 72px 0 58px; }
+      .hero-media { min-height: 470px; }
+      .stats { grid-template-columns: repeat(2,1fr); }
+      .stat:nth-child(2) { border-right:0; }
+      .stat:nth-child(-n+2) { border-bottom:1px solid var(--line); }
+      .section-head, .contact-grid, .manifesto-grid { display:block; }
+      .section-head p { margin-top: 20px; }
+      .product-grid { grid-template-columns: repeat(2,1fr); }
+      .manifesto-list { margin-top: 42px; }
+      .process-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 560px) {
+      .topline { font-size: 9px; letter-spacing: .06em; }
+      .brand-name { font-size: 12px; }
+      .nav-inner { min-height: 62px; }
+      .nav-cta { padding: 9px 12px; font-size: 10px; }
+      .hero-copy h1 { font-size: 54px; }
+      .hero-media { min-height: 390px; }
+      .stats, .product-grid, .process-grid { grid-template-columns: 1fr; }
+      .stat, .stat:nth-child(2) { border-right:0; border-bottom:1px solid var(--line); }
+      .stat:last-child { border-bottom:0; }
+      .product-body h3 { min-height: auto; }
+      .manifesto-list { grid-template-columns:1fr; }
+      .manifesto-item:nth-child(odd) { border-right:0; }
+      .manifesto-item:nth-child(even) { padding-left:0; }
+      .contact-grid { display:grid; gap: 40px; }
+      .section { padding: 78px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior:auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } .reveal { opacity:1; transform:none; } }
+  </style>
+</head>
+<body>
+  <div class="topline">EST. 2004 · YIWU, CHINA &nbsp; ◆ &nbsp; OEKO-TEX® CERTIFIED &nbsp; ◆ &nbsp; WORLDWIDE WHOLESALE</div>
+  <nav class="nav">
+    <div class="shell nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">W</span><span class="brand-name">Wennuan</span>
+      </a>
+      <div class="nav-links">
+        <a href="#collection">Collection</a>
+        <a href="#story">Our Story</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="nav-cta" href="https://www.wennuanhijab.com/" target="_top" rel="noopener">Official Site ↗</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-copy">
+        <span class="eyebrow">2026 Collection · Premium Manufacturer</span>
+        <div class="arabic">حجاب فاخر</div>
+        <h1>Crafted with Care,<br><em>Worn with Grace.</em></h1>
+        <p>A curated collection of premium hijabs — Modal, Jersey, Bamboo, Liquid and Instant Cap. Made for wholesalers, boutiques and private-label brands.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#collection">Explore Collection ↓</a>
+          <a class="btn btn-outline" href="https://www.wennuanhijab.com/" target="_top" rel="noopener">Visit Official Website</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/printed-modal/01.jpg" alt="Printed modal hijab fabric">
+        <div class="hero-note">Seven fabric families.<br>Twenty-two signature pieces.<br>One factory in Yiwu.</div>
+      </div>
+    </section>
+
+    <section class="shell stats" aria-label="Wennuan facts">
+      <div class="stat"><strong>20+</strong><span>Years of heritage</span></div>
+      <div class="stat"><strong>500+</strong><span>Wholesalers served</span></div>
+      <div class="stat"><strong>100</strong><span>Low MOQ for boutique orders</span></div>
+      <div class="stat"><strong>40+</strong><span>Countries reached</span></div>
+    </section>
+
+    <section class="section collection" id="collection">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div><span class="eyebrow">2026 Collection</span><h2>Seven fabric families.<br>Made to be remembered.</h2></div>
+          <p>Every hijab is woven, dyed and finished with care. Browse the range by material, colour story and wholesale use case.</p>
+        </div>
+        <div class="filters" role="tablist" aria-label="Product filters">
+          <button class="filter active" data-filter="all">All 22 items</button>
+          <button class="filter" data-filter="Solid Modal">Solid Modal</button>
+          <button class="filter" data-filter="Printed Modal">Printed Modal</button>
+          <button class="filter" data-filter="Bamboo Jersey">Bamboo Jersey</button>
+          <button class="filter" data-filter="Premium Jersey">Premium Jersey</button>
+          <button class="filter" data-filter="Cotton Jersey">Cotton Jersey</button>
+          <button class="filter" data-filter="Liquid Jersey">Liquid Jersey</button>
+          <button class="filter" data-filter="Instant Cap">Instant Cap</button>
+        </div>
+        <div class="product-grid" id="product-grid">
+          <article class="product reveal" data-category="Solid Modal" data-name="Plain 100% Modal Hijab Scarf" data-family="Solid Modal" data-colors="54 colours" data-spec="80gsm" data-moq="50 pieces" data-price="US$2.40–3.20" data-image="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/solid-modal/01.jpg"><div class="product-media"><span class="product-tag">Solid Modal</span><img src="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/solid-modal/01.jpg" alt="Solid modal hijab"></div><div class="product-body"><div class="eyebrow">54 colours</div><h3>Plain 100% Modal Hijab Scarf</h3><div class="product-meta"><span>80gsm · MOQ 50</span><span>Wholesale</span></div><div class="product-price">US$2.40–3.20</div><div class="product-actions"><button class="product-action choose" type="button" data-action="color">◉ Choose Color</button><button class="product-action" type="button" data-action="detail">□ Details</button></div></div></article>
+          <article class="product reveal" data-category="Printed Modal" data-name="Abstract Feather-Inspired Ink-Wash Print" data-family="Printed Modal" data-colors="136 colours" data-spec="180×70cm · 80gsm" data-moq="50 pieces" data-price="US$4.70–5.20" data-image="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/printed-modal/02.jpg"><div class="product-media"><span class="product-tag">Printed Modal</span><img src="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/printed-modal/02.jpg" alt="Printed modal hijab"></div><div class="product-body"><div class="eyebrow">136 colours</div><h3>Abstract Feather-Inspired Ink-Wash Print</h3><div class="product-meta"><span>180×70cm · MOQ 50</span><span>Private label</span></div><div class="product-price">US$4.70–5.20</div><div class="product-actions"><button class="product-action choose" type="button" data-action="color">◉ Choose Color</button><button class="product-action" type="button" data-action="detail">□ Details</button></div></div></article>
+          <article class="product reveal" data-category="Bamboo Jersey" data-name="Natural OEKO-TEX Certified Bamboo Jersey" data-family="Bamboo Jersey" data-colors="120 colours" data-spec="95% Bamboo + 5% Spandex" data-moq="50 pieces" data-price="US$4.60–5.20" data-image="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/bamboo-jersey/01.jpg"><div class="product-media"><span class="product-tag">Bamboo Jersey</span><img src="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/bamboo-jersey/01.jpg" alt="Bamboo jersey hijab"></div><div class="product-body"><div class="eyebrow">120 colours</div><h3>Natural OEKO-TEX Certified Bamboo Jersey</h3><div class="product-meta"><span>95% Bamboo + 5% Spandex</span><span>Eco-friendly</span></div><div class="product-price">US$4.60–5.20</div><div class="product-actions"><button class="product-action choose" type="button" data-action="color">◉ Choose Color</button><button class="product-action" type="button" data-action="detail">□ Details</button></div></div></article>
+          <article class="product reveal" data-category="Premium Jersey" data-name="Breathable Stretch Jersey Scarf" data-family="Premium Jersey" data-colors="120 colours" data-spec="95% Polyester + 5% Spandex" data-moq="50 pieces" data-price="US$3.80–4.50" data-image="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/premium-jersey/01.jpg"><div class="product-media"><span class="product-tag">Premium Jersey</span><img src="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/premium-jersey/01.jpg" alt="Premium jersey hijab"></div><div class="product-body"><div class="eyebrow">120 colours</div><h3>Breathable Stretch Jersey Scarf</h3><div class="product-meta"><span>95% Polyester + 5% Spandex</span><span>All-season</span></div><div class="product-price">US$3.80–4.50</div><div class="product-actions"><button class="product-action choose" type="button" data-action="color">◉ Choose Color</button><button class="product-action" type="button" data-action="detail">□ Details</button></div></div></article>
+          <article class="product reveal" data-category="Cotton Jersey" data-name="Solid Cotton Jersey Scarf" data-family="Cotton Jersey" data-colors="120 colours" data-spec="95% Cotton + 5% Spandex · 180gsm" data-moq="50 pieces" data-price="US$2.25–2.90" data-image="https://sc02.alicdn.com/kf/Aec2ea039a4cb4ccfb979bbd84fbd5ea5y.png"><div class="product-media"><span class="product-tag">Cotton Jersey</span><img src="https://sc02.alicdn.com/kf/Aec2ea039a4cb4ccfb979bbd84fbd5ea5y.png" alt="Cotton jersey hijab"></div><div class="product-body"><div class="eyebrow">120 colours</div><h3>Solid Cotton Jersey Scarf</h3><div class="product-meta"><span>95% Cotton + 5% Spandex</span><span>180gsm</span></div><div class="product-price">US$2.25–2.90</div><div class="product-actions"><button class="product-action choose" type="button" data-action="color">◉ Choose Color</button><button class="product-action" type="button" data-action="detail">□ Details</button></div></div></article>
+          <article class="product reveal" data-category="Liquid Jersey" data-name="Soft-Touch Full Coverage Hijab" data-family="Liquid Jersey" data-colors="57 colours" data-spec="High-density Rayon · 220gsm" data-moq="50 pieces" data-price="US$4.40–4.80" data-image="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/liquid-jersey/01.jpg"><div class="product-media"><span class="product-tag">Liquid Jersey</span><img src="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/liquid-jersey/01.jpg" alt="Liquid jersey hijab"></div><div class="product-body"><div class="eyebrow">57 colours</div><h3>Soft-Touch Full Coverage Hijab</h3><div class="product-meta"><span>High-density Rayon · 220gsm</span><span>Wrinkle resistant</span></div><div class="product-price">US$4.40–4.80</div><div class="product-actions"><button class="product-action choose" type="button" data-action="color">◉ Choose Color</button><button class="product-action" type="button" data-action="detail">□ Details</button></div></div></article>
+          <article class="product reveal" data-category="Instant Cap" data-name="Silk-Lined Velvet Grip Under Cap" data-family="Instant Cap" data-colors="9 colours" data-spec="Bamboo · silk-lined, velvet grip band" data-moq="50 pieces" data-price="US$3.20–3.80" data-image="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/instant-cap/01.jpg"><div class="product-media"><span class="product-tag">Instant Cap</span><img src="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/instant-cap/01.jpg" alt="Instant bamboo cap"></div><div class="product-body"><div class="eyebrow">9 colours</div><h3>Silk-Lined Velvet Grip Under Cap</h3><div class="product-meta"><span>Bamboo · non-slip band</span><span>Inner wear</span></div><div class="product-price">US$3.20–3.80</div><div class="product-actions"><button class="product-action choose" type="button" data-action="color">◉ Choose Color</button><button class="product-action" type="button" data-action="detail">□ Details</button></div></div></article>
+          <article class="product reveal" data-category="Printed Modal" data-name="Warm Cocoa, Blush and Mocha Gradient" data-family="Printed Modal" data-colors="136 colours" data-spec="180×70cm · 80gsm" data-moq="50 pieces" data-price="US$4.60–5.20" data-image="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/printed-modal/03.jpg"><div class="product-media"><span class="product-tag">Printed Modal</span><img src="https://wennuanfactory.github.io/wennuan-hijab-catalog/images/printed-modal/03.jpg" alt="Gradient printed modal hijab"></div><div class="product-body"><div class="eyebrow">136 colours</div><h3>Warm Cocoa, Blush and Mocha Gradient</h3><div class="product-meta"><span>180×70cm · MOQ 50</span><span>Seasonal print</span></div><div class="product-price">US$4.60–5.20</div><div class="product-actions"><button class="product-action choose" type="button" data-action="color">◉ Choose Color</button><button class="product-action" type="button" data-action="detail">□ Details</button></div></div></article>
+           <article class="product reveal" data-category="Printed Modal" data-name="Paisley Bloom Printed Modal Hijab" data-family="Printed Modal" data-colors="136 colours" data-spec="180×70cm · 80gsm" data-moq="50 pieces" data-price="US$4.60–5.20" data-image="https://sc04.alicdn.com/kf/Sdd557a11595e44659c05b5192963cca0D.jpg"><div class="product-media"><span class="product-tag">Printed Modal</span><img src="https://sc04.alicdn.com/kf/Sdd557a11595e44659c05b5192963cca0D.jpg" alt="Orange and purple paisley printed modal hijab"></div><div class="product-body"><div class="eyebrow">136 colours</div><h3>Paisley Bloom Printed Modal Hijab</h3><div class="product-meta"><span>180×70cm · MOQ 50</span><span>New paisley print</span></div><div class="product-price">US$4.60–5.20</div><div class="product-actions"><button class="product-action choose" type="button" data-action="color">◉ Choose Color</button><button class="product-action" type="button" data-action="detail">□ Details</button></div></div></article>
+          <article class="product reveal" data-category="Cotton Jersey" data-name="Stretchy Plain Jersey Shawl" data-family="Cotton Jersey" data-colors="120 colours" data-spec="180×70cm · 180gsm" data-moq="50 pieces" data-price="US$2.25–2.90" data-image="https://sc02.alicdn.com/kf/A111fef859d894d3db5529547a32c50060.png"><div class="product-media"><span class="product-tag">Cotton Jersey</span><img src="https://sc02.alicdn.com/kf/A111fef859d894d3db5529547a32c50060.png" alt="Cotton jersey scarf"></div><div class="product-body"><div class="eyebrow">120 colours</div><h3>Stretchy Plain Jersey Shawl</h3><div class="product-meta"><span>180×70cm · MOQ 50</span><span>Long scarf</span></div><div class="product-price">US$2.25–2.90</div><div class="product-actions"><button class="product-action choose" type="button" data-action="color">◉ Choose Color</button><button class="product-action" type="button" data-action="detail">□ Details</button></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section manifesto" id="story">
+      <div class="shell manifesto-grid">
+        <div class="reveal"><span class="eyebrow">Why Choose Wennuan</span><h2>Two decades of craft, built for your brand.</h2><p>Direct from our Yiwu facility — practical MOQ, clear specifications, dependable quality and a team that understands wholesale fashion.</p></div>
+        <div class="manifesto-list reveal">
+          <div class="manifesto-item"><strong>Own Factory</strong><span>Direct production and full quality control without middlemen.</span></div>
+          <div class="manifesto-item"><strong>OEKO-TEX Certified</strong><span>Eco-friendly textiles designed with skin comfort in mind.</span></div>
+          <div class="manifesto-item"><strong>OEM / ODM</strong><span>Custom colours, prints, packaging and private labels.</span></div>
+          <div class="manifesto-item"><strong>Fast Delivery</strong><span>15–25 days production with sea, air or express shipping.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process" id="process">
+      <div class="shell">
+        <div class="section-head reveal"><div><span class="eyebrow">How We Work</span><h2>From first sample<br>to finished delivery.</h2></div><p>One clear approval gate before bulk production. You hold the sample before volume starts.</p></div>
+        <div class="process-grid">
+          <div class="step reveal"><span class="step-number">01 / INQUIRY</span><h3>Tell us the brief</h3><p>Share fabric, shade, quantity and packaging needs.</p></div>
+          <div class="step reveal"><span class="step-number">02 / SWATCH</span><h3>Feel the fabric</h3><p>Review physical swatches from the base range.</p></div>
+          <div class="step reveal"><span class="step-number">03 / LAB DIP</span><h3>Match the shade</h3><p>Compare colour options against your reference.</p></div>
+          <div class="step reveal"><span class="step-number">04 / SAMPLE</span><h3>Approve the piece</h3><p>Confirm the full-size sample before bulk production.</p></div>
+          <div class="step reveal"><span class="step-number">05 / BULK</span><h3>We make the run</h3><p>Knitting, dyeing, cutting, sewing and packing in-house.</p></div>
+          <div class="step reveal"><span class="step-number">06 / PACK</span><h3>Add your label</h3><p>Woven labels, hang tags and retail packaging available.</p></div>
+          <div class="step reveal"><span class="step-number">07 / SHIP</span><h3>Move worldwide</h3><p>Sea, air or express courier to your destination.</p></div>
+          <div class="step reveal"><span class="step-number">08 / REPEAT</span><h3>Build the line</h3><p>Repeat programmes stay consistent order after order.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="shell contact-grid">
+        <div class="reveal"><span class="eyebrow">Start a wholesale conversation</span><h2>Bring your next hijab line to life.</h2><p>Send your colour, quantity and target fabric. We will help you choose the right base and route the next step.</p><div class="hero-actions"><a class="btn btn-gold" href="mailto:peri@wennuanfactory.com">Email Wennuan</a><a class="btn btn-light" href="https://wa.me/8615088248404" target="_top" rel="noopener">WhatsApp Peri</a></div></div>
+        <div class="contact-links reveal">
+          <a class="contact-link" href="https://www.wennuanhijab.com/" target="_top" rel="noopener"><span>Official website</span><span>VISIT ↗</span></a>
+          <a class="contact-link" href="mailto:peri@wennuanfactory.com"><span>peri@wennuanfactory.com</span><span>EMAIL ↗</span></a>
+          <a class="contact-link" href="https://wa.me/8615088248404" target="_top" rel="noopener"><span>WhatsApp · +86 15088248404</span><span>CHAT ↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-inner"><span>© Wennuan · Premium Hijab Wholesale</span><span>Made for thoughtful wholesale partners.</span></div></footer>
+
+  <div class="product-modal" id="product-modal" aria-hidden="true">
+    <div class="product-modal-card" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+      <button class="product-modal-close" id="product-modal-close" type="button" aria-label="Close product window">×</button>
+      <div class="product-modal-media"><img id="product-modal-image" src="" alt=""></div>
+      <div class="product-modal-body">
+        <span class="eyebrow" id="product-modal-family">Solid Modal</span>
+        <h2 id="product-modal-title">Product details</h2>
+        <p class="product-modal-copy" id="product-modal-copy">A considered fabric choice for wholesale collections and private-label brands.</p>
+        <div class="detail-panel" id="detail-panel">
+          <div class="product-modal-specs">
+            <div class="product-modal-spec"><small>Material / Range</small><strong id="product-modal-spec">80gsm</strong></div>
+            <div class="product-modal-spec"><small>MOQ</small><strong id="product-modal-moq">50 pieces</strong></div>
+            <div class="product-modal-spec"><small>Available colours</small><strong id="product-modal-colors">54 colours</strong></div>
+            <div class="product-modal-spec"><small>Wholesale price</small><strong id="product-modal-price">US$2.40–3.20</strong></div>
+          </div>
+          <div class="modal-actions"><button class="btn btn-gold modal-to-color" type="button">Choose a colour</button><button class="btn btn-outline add-to-quote" type="button">Add to Quote</button><button class="btn btn-outline modal-close-action" type="button">Back to collection</button></div>
+        </div>
+        <div class="color-panel" id="color-panel" hidden>
+          <div class="color-label"><span>Select a colour</span><span class="selected-color" id="selected-color">Sand</span></div>
+          <div class="color-grid" id="color-grid" role="listbox" aria-label="Available colours">
+            <button class="color-swatch active" type="button" style="background:#d5c3aa" data-color="Sand" aria-label="Sand"></button>
+            <button class="color-swatch" type="button" style="background:#b99a7a" data-color="Cocoa" aria-label="Cocoa"></button>
+            <button class="color-swatch" type="button" style="background:#c48f82" data-color="Blush" aria-label="Blush"></button>
+            <button class="color-swatch" type="button" style="background:#6d7f78" data-color="Sage" aria-label="Sage"></button>
+            <button class="color-swatch" type="button" style="background:#3f4b59" data-color="Slate" aria-label="Slate"></button>
+            <button class="color-swatch" type="button" style="background:#252525" data-color="Black" aria-label="Black"></button>
+            <button class="color-swatch" type="button" style="background:#f4eee2" data-color="Ivory" aria-label="Ivory"></button>
+          </div>
+          <div class="modal-actions"><button class="btn btn-gold add-to-quote" type="button">Add this colour to quote</button><button class="btn btn-outline modal-close-action" type="button">Back to collection</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="quote-fab" id="quote-open" type="button">▣ Your Quote Basket <span class="quote-count" id="quote-count">0</span></button>
+  <div class="quote-panel" id="quote-panel" aria-hidden="true">
+    <aside class="quote-card" role="dialog" aria-modal="true" aria-labelledby="quote-title">
+      <div class="quote-card-header"><button class="quote-close" id="quote-close" type="button" aria-label="Close quote panel">×</button><span class="eyebrow">Inquiry Basket</span><h2 id="quote-title">Your Quote Basket</h2></div>
+      <div class="quote-body" id="quote-body">
+        <div class="cart-empty" id="cart-empty"><div class="cart-empty-icon">♧</div><div><strong>Your basket is empty</strong><span>Browse products and add to quote</span></div></div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-summary" id="cart-summary" hidden><span>Items in quote</span><strong id="cart-total-items">0</strong></div>
+      </div>
+      <div class="cart-footer" id="cart-footer" hidden>
+        <button class="cart-action whatsapp" id="send-whatsapp" type="button">▣ Send via WhatsApp</button>
+        <button class="cart-action email" id="send-email" type="button">▤ Send via Email</button>
+        <button class="cart-action excel" id="download-excel" type="button">♧ Download Excel (with Images)</button>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    (function () {
+      var filters = document.querySelectorAll('.filter');
+      var products = document.querySelectorAll('.product');
+      filters.forEach(function (filter) {
+        filter.addEventListener('click', function () {
+          filters.forEach(function (item) { item.classList.remove('active'); });
+          filter.classList.add('active');
+          var value = filter.getAttribute('data-filter');
+          products.forEach(function (product) {
+            product.style.display = value === 'all' || product.getAttribute('data-category') === value ? '' : 'none';
+          });
+        });
+      });
+      var productModal = document.getElementById('product-modal');
+      var productModalImage = document.getElementById('product-modal-image');
+      var productModalFamily = document.getElementById('product-modal-family');
+      var productModalTitle = document.getElementById('product-modal-title');
+      var productModalSpec = document.getElementById('product-modal-spec');
+      var productModalMoq = document.getElementById('product-modal-moq');
+      var productModalColors = document.getElementById('product-modal-colors');
+      var productModalPrice = document.getElementById('product-modal-price');
+      var detailPanel = document.getElementById('detail-panel');
+      var colorPanel = document.getElementById('color-panel');
+      var selectedColor = document.getElementById('selected-color');
+      var lastProduct = null;
+      var quoteItems = [];
+      var quoteCount = document.getElementById('quote-count');
+      var cartEmpty = document.getElementById('cart-empty');
+      var cartItems = document.getElementById('cart-items');
+      var cartSummary = document.getElementById('cart-summary');
+      var cartTotalItems = document.getElementById('cart-total-items');
+      var cartFooter = document.getElementById('cart-footer');
+      function renderCart() {
+        var total = quoteItems.reduce(function (sum, item) { return sum + item.quantity; }, 0);
+        quoteCount.textContent = total;
+        cartTotalItems.textContent = total;
+        cartEmpty.hidden = quoteItems.length > 0;
+        cartItems.hidden = quoteItems.length === 0;
+        cartSummary.hidden = quoteItems.length === 0;
+        cartFooter.hidden = quoteItems.length === 0;
+        cartItems.innerHTML = quoteItems.map(function (item, index) {
+          return '<div class="cart-item"><img class="cart-item-image" src="' + item.image + '" alt="' + item.name + '"><div><h3 class="cart-item-name">' + item.name + '</h3><div class="cart-item-meta">' + item.family + ' · ' + item.color + '<br>' + item.price + ' · MOQ ' + item.moq + '</div><div class="cart-item-bottom"><div class="cart-qty"><button type="button" data-cart-action="minus" data-index="' + index + '" aria-label="Decrease quantity">−</button><span>' + item.quantity + '</span><button type="button" data-cart-action="plus" data-index="' + index + '" aria-label="Increase quantity">＋</button></div><button class="cart-remove" type="button" data-cart-action="remove" data-index="' + index + '">Remove</button></div></div></div>';
+        }).join('');
+      }
+      function addToQuote() {
+        if (!lastProduct) return;
+        var color = selectedColor.textContent || 'Sand';
+        var key = lastProduct.dataset.name + '|' + color;
+        var existing = quoteItems.find(function (item) { return item.key === key; });
+        if (existing) existing.quantity += 1;
+        else quoteItems.push({ key: key, name: lastProduct.dataset.name, family: lastProduct.dataset.family, color: color, spec: lastProduct.dataset.spec, moq: lastProduct.dataset.moq, price: lastProduct.dataset.price, image: lastProduct.dataset.image, quantity: 1 });
+        renderCart();
+        closeProductModal();
+        var basket = document.getElementById('quote-panel');
+        basket.classList.add('open');
+        basket.setAttribute('aria-hidden', 'false');
+      }
+      function quoteText() {
+        return quoteItems.map(function (item) { return item.name + ' | ' + item.family + ' | Colour: ' + item.color + ' | Qty: ' + item.quantity + ' | ' + item.spec + ' | ' + item.price; }).join('\\n');
+      }
+      function openProductModal(product, mode) {
+        lastProduct = product;
+        productModalImage.src = product.dataset.image;
+        productModalImage.alt = product.dataset.name;
+        productModalFamily.textContent = product.dataset.family;
+        productModalTitle.textContent = product.dataset.name;
+        productModalSpec.textContent = product.dataset.spec;
+        productModalMoq.textContent = product.dataset.moq;
+        productModalColors.textContent = product.dataset.colors;
+        productModalPrice.textContent = product.dataset.price;
+        detailPanel.hidden = mode !== 'detail';
+        colorPanel.hidden = mode !== 'color';
+        productModal.classList.add('open');
+        productModal.setAttribute('aria-hidden', 'false');
+      }
+      document.querySelectorAll('.product-action').forEach(function (button) {
+        button.addEventListener('click', function () {
+          openProductModal(button.closest('.product'), button.dataset.action);
+        });
+      });
+      document.querySelector('.modal-to-color').addEventListener('click', function () {
+        detailPanel.hidden = true;
+        colorPanel.hidden = false;
+      });
+      document.querySelectorAll('.color-swatch').forEach(function (swatch) {
+        swatch.addEventListener('click', function () {
+          document.querySelectorAll('.color-swatch').forEach(function (item) { item.classList.remove('active'); });
+          swatch.classList.add('active');
+          selectedColor.textContent = swatch.dataset.color;
+        });
+      });
+      document.querySelectorAll('.add-to-quote').forEach(function (button) { button.addEventListener('click', addToQuote); });
+      function closeProductModal() { productModal.classList.remove('open'); productModal.setAttribute('aria-hidden', 'true'); }
+      document.getElementById('product-modal-close').addEventListener('click', closeProductModal);
+      document.querySelectorAll('.modal-close-action').forEach(function (button) { button.addEventListener('click', closeProductModal); });
+      productModal.addEventListener('click', function (event) { if (event.target === productModal) closeProductModal(); });
+
+      var panel = document.getElementById('quote-panel');
+      document.getElementById('quote-open').addEventListener('click', function () { renderCart(); panel.classList.add('open'); panel.setAttribute('aria-hidden', 'false'); });
+      document.getElementById('quote-close').addEventListener('click', function () { panel.classList.remove('open'); panel.setAttribute('aria-hidden', 'true'); });
+      panel.addEventListener('click', function (event) { if (event.target === panel) { panel.classList.remove('open'); panel.setAttribute('aria-hidden', 'true'); } });
+      cartItems.addEventListener('click', function (event) {
+        var button = event.target.closest('[data-cart-action]');
+        if (!button) return;
+        var index = Number(button.dataset.index);
+        var action = button.dataset.cartAction;
+        if (action === 'plus') quoteItems[index].quantity += 1;
+        if (action === 'minus') quoteItems[index].quantity = Math.max(1, quoteItems[index].quantity - 1);
+        if (action === 'remove') quoteItems.splice(index, 1);
+        renderCart();
+      });
+      document.getElementById('send-whatsapp').addEventListener('click', function () {
+        var message = encodeURIComponent('Hello Wennuan, I would like to request a quote for:\\n\\n' + quoteText());
+        window.open('https://wa.me/8615088248404?text=' + message, '_top');
+      });
+      document.getElementById('send-email').addEventListener('click', function () {
+        var subject = encodeURIComponent('Wennuan hijab wholesale enquiry');
+        var body = encodeURIComponent('Hello Wennuan, I would like to request a quote for:\\n\\n' + quoteText());
+        window.location.href = 'mailto:peri@wennuanfactory.com?subject=' + subject + '&body=' + body;
+      });
+      document.getElementById('download-excel').addEventListener('click', function () {
+        var rows = [['Product', 'Family', 'Colour', 'Quantity', 'Specification', 'MOQ', 'Price', 'Image URL']].concat(quoteItems.map(function (item) { return [item.name, item.family, item.color, item.quantity, item.spec, item.moq, item.price, item.image]; }));
+        var table = '<table border="1"><thead><tr>' + rows[0].map(function (cell) { return '<th>' + cell + '</th>'; }).join('') + '</tr></thead><tbody>' + rows.slice(1).map(function (row) { return '<tr>' + row.map(function (cell) { return '<td>' + String(cell).replace(/[&<>]/g, function (char) { return {'&':'&amp;','<':'&lt;','>':'&gt;'}[char]; }) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table>';
+        var blob = new Blob(['\\ufeff<html><meta charset="utf-8">' + table + '</html>'], { type: 'application/vnd.ms-excel' });
+        var link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'wennuan-quote-basket.xls';
+        link.click();
+        URL.revokeObjectURL(link.href);
+      });
+      document.addEventListener('keydown', function (event) { if (event.key === 'Escape') { closeProductModal(); panel.classList.remove('open'); panel.setAttribute('aria-hidden', 'true'); } });
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+        }, { threshold: .08 });
+        reveals.forEach(function (item) { observer.observe(item); });
+      } else { reveals.forEach(function (item) { item.classList.add('visible'); }); }
+    }());
+  </script>
+</body>
+</html>
