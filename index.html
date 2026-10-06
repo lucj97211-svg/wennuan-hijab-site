@@ -5,6 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Wennuan premium hijab collection for wholesale buyers, private labels and boutique brands.">
   <title>Wennuan | Premium Hijab Wholesale</title>
+  <script>
+    /* Apply locally saved edits before the page renders. */
+    (function () {
+      var KEY = 'wennuan-edited-html-v1';
+      try {
+        var params = new URLSearchParams(window.location.search);
+        if (params.has('reset')) {
+          localStorage.removeItem(KEY);
+          window.location.replace(window.location.pathname);
+          return;
+        }
+        if (params.has('noedit')) return;
+        if (window.__wennuanRestored) return;
+        var saved = localStorage.getItem(KEY);
+        if (saved && saved.length > 1000) {
+          window.__wennuanRestored = true;
+          document.open();
+          document.write(saved);
+          document.close();
+          return;
+        }
+      } catch (error) {}
+    }());
+  </script>
   <style>
     :root {
       --ink: #27231f;
@@ -204,6 +228,24 @@
       .section { padding: 78px 0; }
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior:auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } .reveal { opacity:1; transform:none; } }
+    /* --- Built-in page editor (owner-side tool) --- */
+    .edit-bar[hidden], .edit-hint[hidden] { display:none !important; }
+    .edit-bar { position:fixed; left:22px; bottom:22px; z-index:60; display:flex; align-items:center; flex-wrap:wrap; gap:6px; padding:8px; border-radius:16px; background:rgba(26,22,17,.94); box-shadow:0 12px 28px rgba(43,31,19,.3); }
+    .edit-bar button { min-height:34px; padding:0 13px; border:0; border-radius:999px; color:#fffdf8; background:rgba(255,255,255,.15); cursor:pointer; font:700 11px var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+    .edit-bar button:hover { background:rgba(255,255,255,.28); }
+    .edit-bar button.primary { color:#251e16; background:var(--gold); }
+    .edit-bar button.danger { color:#ffd7cc; }
+    .edit-state { padding:0 8px; color:#e7c989; font:11px var(--mono); letter-spacing:.06em; }
+    .edit-hint { position:fixed; left:50%; top:14px; z-index:60; transform:translateX(-50%); padding:9px 16px; border-radius:999px; color:#fffdf8; background:rgba(26,22,17,.9); font:12px var(--mono); text-align:center; }
+    html.editing [contenteditable="true"] { outline:1px dashed rgba(182,146,85,.9); outline-offset:3px; cursor:text; }
+    html.editing [contenteditable="true"]:focus { outline:2px solid var(--gold); background:rgba(182,146,85,.12); }
+    html.editing .product { position:relative; }
+    html.editing img { cursor:pointer; outline:1px dashed rgba(182,146,85,.9); outline-offset:-4px; }
+    html.editing [data-editor-ui], html.editing [data-editor-ui] * { pointer-events:auto !important; }
+    .card-tools { position:absolute; top:10px; right:10px; z-index:3; display:flex; gap:6px; }
+    .card-tools button { width:28px; height:28px; border:1px solid var(--line); border-radius:50%; color:var(--ink); background:rgba(255,253,248,.94); cursor:pointer; font-size:13px; line-height:1; }
+    .card-tools button:hover { border-color:var(--gold); background:var(--gold); }
+    .card-tools button.del:hover { border-color:#a8412f; color:#fff; background:#a8412f; }
   </style>
 </head>
 <body>
@@ -511,6 +553,200 @@
         }, { threshold: .08 });
         reveals.forEach(function (item) { observer.observe(item); });
       } else { reveals.forEach(function (item) { item.classList.add('visible'); }); }
+    }());
+  </script>
+
+  <div class="edit-bar" id="edit-bar" data-editor-ui hidden>
+    <span class="edit-state" id="edit-state">编辑模式</span>
+    <button type="button" id="edit-toggle">开始编辑</button>
+    <button type="button" id="edit-save">保存</button>
+    <button type="button" class="primary" id="edit-export">导出 HTML</button>
+    <button type="button" class="danger" id="edit-reset">重置</button>
+    <button type="button" id="edit-off">关闭入口</button>
+  </div>
+  <div class="edit-hint" id="edit-hint" data-editor-ui hidden>点击文字直接修改 · 点击图片可替换 · 产品卡片右上角可复制或删除</div>
+
+  <script>
+    (function () {
+      'use strict';
+      var KEY = 'wennuan-edited-html-v1';
+      var FLAG = 'wennuan-editor-entry';
+      var bar = document.getElementById('edit-bar');
+      if (!bar) return;
+      var hint = document.getElementById('edit-hint');
+      var stateLabel = document.getElementById('edit-state');
+      var toggleButton = document.getElementById('edit-toggle');
+      var editing = false;
+
+      function read(key) { try { return window.localStorage.getItem(key); } catch (error) { return null; } }
+      function write(key, value) { try { window.localStorage.setItem(key, value); return true; } catch (error) { return false; } }
+
+      try { if (new URLSearchParams(window.location.search).has('edit')) write(FLAG, '1'); } catch (error) {}
+      if (read(FLAG) === '1') bar.hidden = false;
+
+      var TEXT_SELECTOR = 'h1, h2, h3, h4, p, span, strong, small, li, blockquote, .eyebrow';
+
+      function setTextEditable(on) {
+        Array.prototype.forEach.call(document.querySelectorAll(TEXT_SELECTOR), function (element) {
+          if (element.closest('[data-editor-ui]')) return;
+          if (on) { element.setAttribute('contenteditable', 'true'); element.setAttribute('spellcheck', 'false'); }
+          else { element.removeAttribute('contenteditable'); element.removeAttribute('spellcheck'); }
+        });
+      }
+
+      function addCardTools() {
+        Array.prototype.forEach.call(document.querySelectorAll('.product'), function (card) {
+          if (card.querySelector('.card-tools')) return;
+          var tools = document.createElement('div');
+          tools.className = 'card-tools';
+          tools.setAttribute('data-editor-ui', '');
+          tools.setAttribute('data-editor-remove', '');
+          var copy = document.createElement('button');
+          copy.type = 'button'; copy.title = '复制此产品'; copy.textContent = '⧉';
+          copy.addEventListener('click', function (event) {
+            event.preventDefault(); event.stopPropagation();
+            var clone = card.cloneNode(true);
+            Array.prototype.forEach.call(clone.querySelectorAll('[data-editor-remove]'), function (node) { node.remove(); });
+            card.parentNode.insertBefore(clone, card.nextSibling);
+            addCardTools();
+          });
+          var remove = document.createElement('button');
+          remove.type = 'button'; remove.className = 'del'; remove.title = '删除此产品'; remove.textContent = '✕';
+          remove.addEventListener('click', function (event) {
+            event.preventDefault(); event.stopPropagation();
+            card.remove();
+          });
+          tools.appendChild(copy);
+          tools.appendChild(remove);
+          card.appendChild(tools);
+        });
+      }
+      function removeCardTools() {
+        Array.prototype.forEach.call(document.querySelectorAll('.card-tools'), function (node) { node.remove(); });
+      }
+
+      function enterEdit() {
+        editing = true;
+        document.documentElement.classList.add('editing');
+        setTextEditable(true);
+        addCardTools();
+        if (hint) hint.hidden = false;
+        if (stateLabel) stateLabel.textContent = '编辑中';
+        toggleButton.textContent = '退出编辑';
+      }
+      function exitEdit() {
+        editing = false;
+        document.documentElement.classList.remove('editing');
+        setTextEditable(false);
+        removeCardTools();
+        if (hint) hint.hidden = true;
+        if (stateLabel) stateLabel.textContent = '编辑模式';
+        toggleButton.textContent = '开始编辑';
+      }
+      toggleButton.addEventListener('click', function () { if (editing) { exitEdit(); } else { enterEdit(); } });
+
+      document.addEventListener('click', function (event) {
+        if (!editing) return;
+        if (event.target.closest('[data-editor-ui]')) return;
+        var blocked = event.target.closest('a, button');
+        if (blocked) { event.preventDefault(); event.stopPropagation(); }
+      }, true);
+
+      function readAndResize(file, done) {
+        var reader = new FileReader();
+        reader.onload = function () {
+          var probe = new Image();
+          probe.onload = function () {
+            var maxWidth = 1200;
+            var scale = Math.min(1, maxWidth / probe.width);
+            if (scale === 1 && file.size < 300000) { done(reader.result); return; }
+            var canvas = document.createElement('canvas');
+            canvas.width = Math.round(probe.width * scale);
+            canvas.height = Math.round(probe.height * scale);
+            canvas.getContext('2d').drawImage(probe, 0, 0, canvas.width, canvas.height);
+            try { done(canvas.toDataURL('image/jpeg', 0.82)); } catch (error) { done(reader.result); }
+          };
+          probe.onerror = function () { done(reader.result); };
+          probe.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+      function pickImage(image) {
+        var input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.setAttribute('data-editor-remove', '');
+        input.style.position = 'fixed';
+        input.style.left = '-9999px';
+        document.body.appendChild(input);
+        input.addEventListener('change', function () {
+          var file = input.files && input.files[0];
+          if (file) readAndResize(file, function (dataUrl) { image.src = dataUrl; image.removeAttribute('srcset'); });
+          input.remove();
+        });
+        input.click();
+      }
+      document.addEventListener('click', function (event) {
+        if (!editing) return;
+        var image = event.target.closest('img');
+        if (!image) return;
+        event.preventDefault();
+        event.stopPropagation();
+        pickImage(image);
+      }, true);
+
+      function buildCleanHtml() {
+        var clone = document.documentElement.cloneNode(true);
+        clone.classList.remove('editing');
+        Array.prototype.forEach.call(clone.querySelectorAll('[data-editor-remove]'), function (node) { node.remove(); });
+        Array.prototype.forEach.call(clone.querySelectorAll('[contenteditable]'), function (node) {
+          node.removeAttribute('contenteditable');
+          node.removeAttribute('spellcheck');
+        });
+        Array.prototype.forEach.call(clone.querySelectorAll('.visible'), function (node) { node.classList.remove('visible'); });
+        function setHidden(selector, value) { var node = clone.querySelector(selector); if (node) node.hidden = value; }
+        function setText(selector, value) { var node = clone.querySelector(selector); if (node) node.textContent = value; }
+        setHidden('#cart-items', true);
+        setHidden('#cart-empty', false);
+        setHidden('#cart-summary', true);
+        setHidden('#cart-footer', true);
+        setHidden('#edit-bar', true);
+        setHidden('#edit-hint', true);
+        setText('#cart-total-items', '0');
+        setText('#quote-count', '0');
+        var items = clone.querySelector('#cart-items'); if (items) items.innerHTML = '';
+        var panel = clone.querySelector('#quote-panel'); if (panel) panel.setAttribute('aria-hidden', 'true');
+        var modal = clone.querySelector('#product-modal'); if (modal) modal.setAttribute('aria-hidden', 'true');
+        return '<!doctype html>\n' + clone.outerHTML;
+      }
+
+      document.getElementById('edit-save').addEventListener('click', function () {
+        var html = buildCleanHtml();
+        if (!write(KEY, html)) { window.alert('保存失败：内容体积超出浏览器存储上限，请改用「导出 HTML」。'); return; }
+        if (editing) exitEdit();
+        window.alert('已保存到本机浏览器，刷新页面即可看到保存后的效果。');
+      });
+      document.getElementById('edit-export').addEventListener('click', function () {
+        var html = buildCleanHtml();
+        var blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+        var link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'index.html';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.setTimeout(function () { URL.revokeObjectURL(link.href); }, 5000);
+      });
+      document.getElementById('edit-reset').addEventListener('click', function () {
+        if (!window.confirm('清除本机保存的编辑内容，恢复为线上原始版本？')) return;
+        try { window.localStorage.removeItem(KEY); } catch (error) {}
+        window.location.replace(window.location.pathname);
+      });
+      document.getElementById('edit-off').addEventListener('click', function () {
+        try { window.localStorage.removeItem(FLAG); } catch (error) {}
+        exitEdit();
+        bar.hidden = true;
+      });
     }());
   </script>
 </body>
